@@ -51,7 +51,7 @@ sudo chmod 600 /etc/samba-creds
 
 # Create net drive
 sudo nano /etc/fstab
-//10.0.0.100/nextcloud /nextcloud cifs credentials=/etc/samba-creds,uid=33,gid=33,file_mode=0770,dir_mode=0770 0 0
+//10.0.0.200/nextcloud /nextcloud cifs credentials=/etc/samba-creds,uid=33,gid=33,file_mode=0770,dir_mode=0770 0 0
 ---
 
 # Mount
@@ -61,9 +61,9 @@ sudo mount -a
 
 Cloudflare tunnels
 
-- http tunnel to `local_ip_address:11000
+- http tunnel to `10.0.0.200:11000
 
 Local setup
 ```
-https://local_ip_address:8080
+https://10.0.0.200:8080
 ```
