@@ -33,3 +33,37 @@ volumes:
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer # This line is not allowed to be changed.
 ```
+
+Network Share
+```bash
+sudo apt install cifs-utils -y
+sudo mkdir -p /nextcloud
+
+# Creds
+sudo nano /etc/samba-creds
+Add:
+
+username=your_smb_user
+password=your_smb_password
+---
+
+sudo chmod 600 /etc/samba-creds
+
+# Create net drive
+sudo nano /etc/fstab
+//10.0.0.100/nextcloud /nextcloud cifs credentials=/etc/samba-creds,uid=33,gid=33,file_mode=0770,dir_mode=0770 0 0
+---
+
+# Mount
+sudo mount -a
+
+```
+
+Cloudflare tunnels
+
+- http tunnel to `local_ip_address:11000
+
+Local setup
+```
+https://local_ip_address:8080
+```
